@@ -1,0 +1,41 @@
+.wrapper {
+  height: 460px;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.popup {
+  min-width: 200px;
+  color: #0b1220;
+}
+
+.popupMeta,
+.popupDominant {
+  color: #555;
+  font-size: 12px;
+}
+
+.popupAqi {
+  margin-top: 6px;
+}
+
+@media (max-width: 880px) {
+  .wrapper {
+    height: 360px;
+  }
+}

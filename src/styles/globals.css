@@ -1,0 +1,245 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #0b1220;
+  --panel: #121c2f;
+  --panel-2: #19253e;
+  --text: #e6ecf5;
+  --muted: #93a3bf;
+  --border: #26324e;
+  --accent: #4cc9f0;
+  --focus: #4cc9f0;
+  --aqi-1: #4ade80;
+  --aqi-2: #a3e635;
+  --aqi-3: #facc15;
+  --aqi-4: #fb923c;
+  --aqi-5: #ef4444;
+}
+
+/* ---------- Reset / base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 26px;
+}
+h2 {
+  margin: 24px 0 12px;
+  font-size: 20px;
+}
+
+/* ---------- Accessibility helpers ---------- */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: #0b1220;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Typography helpers ---------- */
+.lead {
+  color: var(--muted);
+  margin-top: 0;
+}
+.meta {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+.muted {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- Design-system primitives ---------- */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+.grid.stats {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin: 0;
+}
+.grid.cards {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.stat {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 0;
+}
+.stat .label {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.stat .value {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 4px 0 0;
+}
+.stat .value-sm {
+  font-size: 16px;
+}
+.stat .meta {
+  margin: 2px 0 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0b1220;
+}
+.badge.aqi-1 { background: var(--aqi-1); }
+.badge.aqi-2 { background: var(--aqi-2); }
+.badge.aqi-3 { background: var(--aqi-3); }
+.badge.aqi-4 { background: var(--aqi-4); }
+.badge.aqi-5 { background: var(--aqi-5); }
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.pill {
+  display: inline-block;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: inherit;
+}
+.pill-button,
+button.pill {
+  cursor: pointer;
+}
+.pill-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pill-toggle {
+  transition: color 120ms, border-color 120ms, background 120ms;
+}
+.pill-toggle.is-active {
+  color: var(--text);
+  background: var(--panel);
+}
+
+/* ---------- Table base ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+th {
+  background: var(--panel-2);
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+}
+tr:last-child td,
+tr:last-child th {
+  border-bottom: none;
+}
+
+/* ---------- Leaflet overrides ---------- */
+/* Leaflet injects its own DOM with these fixed classes, so we can't scope them. */
+.leaflet-container {
+  background: #0b1220;
+  font-family: inherit;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #ffffff;
+  color: #0b1220;
+}
+
+/* `.map-marker` lives inside raw HTML passed to L.divIcon — has to stay global. */
+.map-marker {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b1220;
+  font-weight: 700;
+}
+
+/* ---------- Trivial one-offs ---------- */
+.pollutant-desc {
+  margin: 12px 0;
+}

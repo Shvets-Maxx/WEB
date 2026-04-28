@@ -1,0 +1,51 @@
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+}
+
+.mapCard {
+  padding: 8px;
+}
+
+.chartSkeleton {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: var(--panel);
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+}
+
+.panelTitle {
+  margin: 0;
+}
+
+.panelDominant {
+  margin-top: 8px;
+}
+
+.panelSubtitle {
+  margin: 16px 0 8px;
+  font-size: 14px;
+}
+
+.panelActions {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
